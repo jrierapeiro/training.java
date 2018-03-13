@@ -8,8 +8,14 @@ import java.util.List;
 // Lambda:
 // Type: functional interface. Interface with one abstract method
 // Lambda vs objects: Better performance. It's not an object but it's an object without identity
-public class LambdaExamples {
-    public static void LambdaFileFilterExample(){
+public class LambdaExamples implements ICustomExamples {
+    public void RunExamples(){
+        LambdaFileFilterExample();
+        LambdaStringComparatorExample();
+        LambaCollectionsExample();
+    }
+
+    private static void LambdaFileFilterExample(){
         // Anonymous class definition
         FileFilter fileFilter = new FileFilter() {
             public boolean accept(File file) {
@@ -32,7 +38,7 @@ public class LambdaExamples {
         System.out.println("LambdaFileFilterExample: OK");
     }
 
-    public static void LambdaStringComparatorExample(){
+    private static void LambdaStringComparatorExample(){
         Comparator<String> stringComparator = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
         List<String> list = Arrays.asList("***","**","****","*");
         Collections.sort(list, stringComparator);
@@ -43,5 +49,10 @@ public class LambdaExamples {
         }
 
         System.out.println("LambdaStringComparatorExample: OK");
+    }
+
+    private static void LambaCollectionsExample(){
+        List<String> list = Arrays.asList("***","**","****","*");
+        list.forEach(s -> System.out.println(s));
     }
 }
