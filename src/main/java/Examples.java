@@ -1,14 +1,15 @@
 import java.io.File;
 import java.io.FileFilter;
-import java.util.Arrays;
+import java.util.*;
 
 public class Examples {
 
     public static void main(String[] args){
-        AnonymousClassExample();
+        LambdaFileFilterExample();
+        LambdaStringComparatorExample();
     }
 
-    public static void AnonymousClassExample(){
+    public static void LambdaFileFilterExample(){
         // Anonymous class definition
         FileFilter fileFilter = new FileFilter() {
             public boolean accept(File file) {
@@ -28,6 +29,19 @@ public class Examples {
            assert Arrays.asList(filesFromLambda).contains(f);
         }
 
-        System.out.println("AnonymousClassExample: OK");
+        System.out.println("LambdaFileFilterExample: OK");
+    }
+
+    public static void LambdaStringComparatorExample(){
+        Comparator<String> stringComparator = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
+        List<String> list = Arrays.asList("***","**","****","*");
+        Collections.sort(list, stringComparator);
+        Integer lastLength = 0;
+        for(String s : list){
+            assert s.length() >= lastLength;
+            lastLength = s.length();
+        }
+
+        System.out.println("LambdaStringComparatorExample: OK");
     }
 }
