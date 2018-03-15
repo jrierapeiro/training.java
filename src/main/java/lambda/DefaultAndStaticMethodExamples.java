@@ -1,3 +1,6 @@
+package lambda;
+
+import common.ICustomExamples;
 import org.omg.CORBA.Object;
 
 import java.util.Objects;

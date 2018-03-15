@@ -1,3 +1,5 @@
+package lambda;
+
 public class FunctionalInterfaceExamples {
     public interface Supplier<T>{
         T get();

@@ -1,3 +1,5 @@
+package lambda;
+
 import java.util.function.Consumer;
 
 public class MethodReferencesExamples {

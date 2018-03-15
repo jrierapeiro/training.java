@@ -1,3 +1,7 @@
+package lambda;
+
+import common.ICustomExamples;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.util.Arrays;
