@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 // Stream: Map, filter, or reduce operations; not hold any data; not change data
 // Efficiently:
-// - In parallel, to levte erage the computing power of multicore CPUs
+// - In parallel, to leverage the computing power of multicore CPUs
 // - Pipeline, to avoid unncessary computations
 // Collection is not a Stream
 // The output stream of a filter action is nothing! Stream does not hold data
@@ -27,6 +27,7 @@ public class SteamAPIs implements ICustomExamples {
         this.FilterStreams();
         this.IntermediaryAndFinalOperations();
         this.MapAndFlatMapOperations();
+        this.ReductionOperation();
     }
 
     private void BuildingAndConsumingSteams(){
@@ -114,5 +115,13 @@ public class SteamAPIs implements ICustomExamples {
         assert output2.size() == 14;
 
         System.out.println("MapAndFlatMapOperations: OK");
+    }
+
+    private void ReductionOperation(){
+        List<Integer> source1 = Arrays.asList(1,2,3);
+        Stream<Integer> stream = source1.stream();
+        Integer sum = stream.reduce(0, (a, i) -> a+ i);
+        assert sum == 6;
+        System.out.println("ReductionOperation: OK");
     }
 }
