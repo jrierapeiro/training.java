@@ -9,5 +9,6 @@ public class ExamplesRunner {
         new SteamAPIs().RunExamples();
         new date.and.time.Examples().RunExamples();
         new io.Examples().RunExamples();
+        new map.Examples().RunExamples();
     }
 }

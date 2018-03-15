@@ -16,7 +16,7 @@ public class DefaultAndStaticMethodExamples implements ICustomExamples {
         Predicate<String> p2 = s -> s.length() > 10;
         Predicate<String> p3 = p1.and(p2);
 
-        assert p3.test("ABCDEFGHIJ");
+        assert p3.test("ABCDEFGHIJLMN");
         System.out.println("PredicatesExample: OK");
     }
 

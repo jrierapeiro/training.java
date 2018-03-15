@@ -111,7 +111,7 @@ public class SteamAPIs implements ICustomExamples {
         Function<List<Integer>, Stream<Integer>> flatmapper = l -> l.stream();
         composition1.stream()
                 .flatMap(flatmapper)
-                .forEach(output1::add);
+                .forEach(output2::add);
 
         assert output2.size() == 14;
 
@@ -153,7 +153,7 @@ public class SteamAPIs implements ICustomExamples {
     private void CollectorsExamples(){
         List<String> source1 = Arrays.asList("The", "collect", "method");
 
-        assert source1.stream().collect(Collectors.joining(" ")) == "The collect method";
+        assert source1.stream().collect(Collectors.joining(" ")).toString().equals("The collect method");
 
         List<String> source2 = Arrays.asList("The", "abc", "method");
 
@@ -165,7 +165,7 @@ public class SteamAPIs implements ICustomExamples {
                         )
                 );
         assert result.get(3) == 2; // 2 strings with length 3
-        assert result.get(5) == 1; // 1 string with length 5
+        assert result.get(6) == 1; // 1 string with length 6
         System.out.println("CollectorsExamples: OK");
     }
 }

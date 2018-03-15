@@ -4,6 +4,7 @@ import common.ICustomExamples;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Set;
 
@@ -23,9 +24,9 @@ public class Examples implements ICustomExamples {
     // Immutable!
     private void InstantClassExamples (){
         Instant now = Instant.now();
-        Instant end = Instant.now();
+        Instant end =  Instant.now();
         Duration elapsed = Duration.between(now, end);
-        assert elapsed.toMillis() > 0;
+        assert elapsed.toHours() == 0;
         System.out.println("InstantClassExamples: OK");
     }
 
