@@ -8,5 +8,6 @@ public class ExamplesRunner {
         new DefaultAndStaticMethodExamples().RunExamples();
         new SteamAPIs().RunExamples();
         new date.and.time.Examples().RunExamples();
+        new io.Examples().RunExamples();
     }
 }
