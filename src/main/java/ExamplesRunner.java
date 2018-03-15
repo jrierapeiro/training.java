@@ -10,5 +10,6 @@ public class ExamplesRunner {
         new date.and.time.Examples().RunExamples();
         new io.Examples().RunExamples();
         new map.Examples().RunExamples();
+        new training.immutables.Examples().RunExamples();
     }
 }
