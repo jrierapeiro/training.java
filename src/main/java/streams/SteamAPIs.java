@@ -1,15 +1,14 @@
 package streams;
 
+import com.sun.javafx.collections.MappingChange;
 import common.ICustomExamples;
 import lambda.FunctionalInterfaceExamples;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 // Stream: Map, filter, or reduce operations; not hold any data; not change data
@@ -28,6 +27,8 @@ public class SteamAPIs implements ICustomExamples {
         this.IntermediaryAndFinalOperations();
         this.MapAndFlatMapOperations();
         this.ReductionOperation();
+        this.OptionalExamples();
+        this.CollectorsExamples();
     }
 
     private void BuildingAndConsumingSteams(){
@@ -122,6 +123,49 @@ public class SteamAPIs implements ICustomExamples {
         Stream<Integer> stream = source1.stream();
         Integer sum = stream.reduce(0, (a, i) -> a+ i);
         assert sum == 6;
+
+        assert source1.stream().max(Comparator.naturalOrder()).get() == 3;
+        assert source1.stream().min(Comparator.naturalOrder()).get() == 1;
+        assert source1.stream().count() == 3;
+        assert source1.stream().allMatch(i -> i > 0);
+        assert source1.stream().noneMatch(i -> i > 10);
+        assert source1.stream().anyMatch(i -> i > 2);
+        assert source1.stream().findFirst().get() == 1;
+        assert source1.stream().findAny().get() != null;
+
         System.out.println("ReductionOperation: OK");
+    }
+
+    private void OptionalExamples(){
+        List<Integer> source1 = Arrays.asList(1,2,3);
+        Stream<Integer> stream = source1.stream();
+        // When source1 is empty, max is null not 0 so the result needs to be Optional
+        Optional<Integer> max = stream.max(Comparator.naturalOrder());
+
+        assert max.isPresent(); // has value
+        assert max.get() == 3;
+
+
+        System.out.println("OptionalExamples: OK");
+    }
+
+    // Mutable reductions
+    private void CollectorsExamples(){
+        List<String> source1 = Arrays.asList("The", "collect", "method");
+
+        assert source1.stream().collect(Collectors.joining(" ")) == "The collect method";
+
+        List<String> source2 = Arrays.asList("The", "abc", "method");
+
+        Map<Integer, Long> result = source2.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                String::length,
+                                Collectors.counting()
+                        )
+                );
+        assert result.get(3) == 2; // 2 strings with length 3
+        assert result.get(5) == 1; // 1 string with length 5
+        System.out.println("CollectorsExamples: OK");
     }
 }
