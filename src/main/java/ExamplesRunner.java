@@ -1,6 +1,7 @@
 import lambda.DefaultAndStaticMethodExamples;
 import lambda.LambdaExamples;
 import streams.SteamAPIs;
+import training.immutables.exercise.ExerciseRunner;
 
 public class ExamplesRunner {
     public static void main(String[] args){
@@ -11,5 +12,6 @@ public class ExamplesRunner {
         new io.Examples().RunExamples();
         new map.Examples().RunExamples();
         new training.immutables.Examples().RunExamples();
+        new ExerciseRunner().RunExamples();
     }
 }

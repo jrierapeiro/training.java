@@ -1,6 +1,7 @@
 package training.immutables;
 
 import common.ICustomExamples;
+import training.immutables.examples.*;
 
 public class Examples implements ICustomExamples {
 
